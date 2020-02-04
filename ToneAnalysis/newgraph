@@ -1,0 +1,33 @@
+import librosa
+import librosa.display
+import numpy as np
+y, sr = librosa.load('FirstHalfOfMoana.wav', duration=100)
+onset_env = librosa.onset.onset_strength(y=y, sr=sr,
+                                         hop_length=512,
+                                         aggregate=np.median)
+
+peaks = librosa.util.peak_pick(onset_env, 3, 3, 3, 5, 0.5, 10)
+peaks
+import matplotlib.pyplot as plt
+times = librosa.frames_to_time(np.arange(len(onset_env)),
+                                sr=sr, hop_length=512)
+plt.figure()
+ax = plt.subplot(2, 1, 2)
+D = librosa.stft(y)
+librosa.display.specshow(librosa.amplitude_to_db(D, ref=np.max),
+                         y_axis='log', x_axis='time')
+plt.subplot(2, 1, 1, sharex=ax)
+plt.plot(times, onset_env, alpha=0.8, label='Onset strength')
+plt.vlines(times[peaks], 0,
+
+onset_env.max(), color='r', alpha=0.8,
+          label='Selected peaks')
+plt.legend(frameon=True, framealpha=0.8)
+plt.axis('tight')
+plt.tight_layout()
+plt.show()
+
+
+import pyAudioAnalysis
+from pyAudioAnalysis import audioTrainTest as aT
+aT.fileClassification("FirstHalfOfMoana.wav", "data/svmMusicGenre3","svm")

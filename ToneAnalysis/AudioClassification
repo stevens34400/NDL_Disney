@@ -1,0 +1,63 @@
+import librosa
+import librosa.display
+import IPython.display as ipd
+ipd.Audio('FirstHalfOfMoana.wav')
+data, sampling_rate = librosa.load('FirstHalfOfMoana.wav') #should be tested with training data
+% pylab inline
+import os
+import pandas as pd
+import librosa
+import glob 
+
+
+plt.figure(figsize=(12, 4))
+librosa.display.waveplot(data, sr=sampling_rate)
+
+i = random.choice(train.index)
+
+audio_name = train.ID[i]
+path = os.path.join(data_dir, 'FirstHalfOfMoana.wav', str(audio_name) + 'FirstHalfOfMoana.wav')
+
+print('Class: ', train.Class[i])
+x, sr = librosa.load('../data/Train/' + str(train.ID[i]) + '.wav')
+
+plt.figure(figsize=(12, 4))
+librosa.display.waveplot(x, sr=sr)
+
+
+def mtFeatureExtractionToFile(fileName, midTermSize, midTermStep, shortTermSize, shortTermStep, outPutFile,
+
+                             storeStFeatures=False, storeToCSV=False, PLOT=False):
+
+[fs, x] = audioBasicIO.readAudioFile('FirstHalfOfMoana.wav')
+
+x = audioBasicIO.stereo2mono(x)
+storeStFeatures = [mtF, stF, _]
+
+if storeStFeatures:[mtF, stF, _]
+
+[mtF, stF, _] = mtFeatureExtraction(x, fs,
+
+                                         round(fs * midTermSize),
+
+                                         round(fs * midTermStep),
+
+                                         round(fs * shortTermSize),
+
+                                         round(fs * shortTermStep))
+
+
+else:
+
+        [mtF, _, _] = mtFeatureExtraction(x, fs, round(fs*midTermSize),
+
+                                       round(fs * midTermStep),
+
+                                       round(fs * shortTermSize),
+
+                                       round(fs * shortTermStep))
+
+    # save mt features to numpy file
+
+numpy.save(outPutFile, mtF)
+#Doesn't work
