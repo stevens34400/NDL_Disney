@@ -12,9 +12,10 @@ Image processing team primarily focused on the detection of characters in movies
 <p align="center">
   <img width="800" height="400" src="https://github.com/stevens34400/NDL_Disney/blob/master/images/contour_frame.PNG">
 </p>
+Placed contour lines around objects that had similar palette of colors to character.
 
 ### Bounding Box and Character Deletion
 <p align="center">
   <img width="800" height="400" src="https://github.com/stevens34400/NDL_Disney/blob/master/images/char_deletion.PNG">
 </p>
-
+Created bounding box from contour lines and cropped are in bounding box from scene. 
